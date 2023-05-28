@@ -123,6 +123,19 @@ const Calculator = () => {
       return;
     }
 
+    if (val === '.') {
+      if (lastOperator) {
+        const operatorIndex = displayValue.lastIndexOf(lastOperator);
+        const numberAfterLastOperator = displayValue.slice(operatorIndex);
+        if (numberAfterLastOperator.includes('.')) {
+          return;
+        }
+      }
+      if (!lastOperator && displayValue.includes('.')) {
+        return;
+      }
+    }
+
     setDisplayValue(displayValue + val);
   };
 
